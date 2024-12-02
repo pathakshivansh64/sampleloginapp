@@ -9,9 +9,8 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: true, // Allow all origins
-  methods: ['GET', 'POST', 'OPTIONS'], // Allow GET, POST, and OPTIONS methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'OPTIONS','PUT','DELETE'], // Allow GET, POST, and OPTIONS method
   preflightContinue: false, // Automatically handle OPTIONS requests
 };
 
