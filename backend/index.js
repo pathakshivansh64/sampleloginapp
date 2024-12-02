@@ -8,7 +8,9 @@ dotenv.config({path:"./.env"});
 const app = express();
 console.log(process.env.Mongo_Url);
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://sampleloginapp-frontend.vercel.app'
+}));
 app.use(express.json());
 
 // MongoDB connection
