@@ -9,7 +9,7 @@ const app = express();
 console.log(process.env.Mongo_Url);
 // Middleware
 app.use(cors({
-  origin: "https://sampleloginapp-frontend.vercel.app/"
+  origin: "https://sampleloginapp-frontend.vercel.app"
 }));
 app.use(express.json());
 
