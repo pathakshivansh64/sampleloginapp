@@ -6,12 +6,26 @@ const dotenv = require("dotenv");
 dotenv.config({path:"./.env"});
 
 const app = express();
-console.log(process.env.Mongo_Url);
+
 // Middleware
-app.use(cors({
-  origin: "https://sampleloginapp-frontend.vercel.app"
-}));
-app.use(express.json());
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ['https://sampleloginapp-frontend.vercel.app'];
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS','PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));  // Apply CORS
+app.use(express.json());  // Parse incoming JSON
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
 // MongoDB connection
 mongoose
