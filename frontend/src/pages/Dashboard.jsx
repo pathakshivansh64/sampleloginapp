@@ -13,7 +13,7 @@ const Dashboard = () => {
     const fetchContacts = async () => {
       try {
         const userId = JSON.parse(atob(token.split(".")[1])).userId;
-        const response = await axios.get(`http://localhost:5000/api/contacts/${userId}`, {
+        const response = await axios.get(`https://sampleloginapp-backend.vercel.app/api/contacts/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setContacts(response.data);
@@ -33,7 +33,7 @@ const Dashboard = () => {
       if (editingContactId) {
         // Update existing contact
         await axios.put(
-          `http://localhost:5000/api/contacts/${editingContactId}`,
+          `https://sampleloginapp-backend.vercel.app/api/contacts/${editingContactId}`,
           { ...form, userId },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -46,7 +46,7 @@ const Dashboard = () => {
       } else {
         // Add new contact
         const response = await axios.post(
-          "http://localhost:5000/api/contacts",
+          "https://sampleloginapp-backend.vercel.app/api/contacts",
           { ...form, userId },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -71,7 +71,7 @@ const Dashboard = () => {
   const handleDelete = async (contactId) => {
     if (window.confirm("Are you sure you want to delete this contact?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/contacts/${contactId}`, {
+        await axios.delete(`https://sampleloginapp-backend.vercel.app/api/contacts/${contactId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setContacts(contacts.filter((contact) => contact._id !== contactId));
