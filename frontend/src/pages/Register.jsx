@@ -19,6 +19,7 @@ const Register = () => {
       alert("Registration successful! You can now log in.");
       navigate('/login')
     } catch (error) {
+    
       alert(error.response.data.message || "Something went wrong.");
     }
   };
