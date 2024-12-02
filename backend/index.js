@@ -9,23 +9,14 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = ['https://sampleloginapp-frontend.vercel.app'];
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true); // Allow the request
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS','PUT'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: true, // Allow all origins
+  methods: ['GET', 'POST', 'OPTIONS'], // Allow GET, POST, and OPTIONS methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+  preflightContinue: false, // Automatically handle OPTIONS requests
 };
 
-app.use(cors(corsOptions));  // Apply CORS
-app.use(express.json());  // Parse incoming JSON
-
-// Handle preflight requests
-app.options('*', cors(corsOptions));
+app.use(cors(corsOptions)); // Apply CORS middleware globally
+app.use(express.json());
 
 // MongoDB connection
 mongoose
