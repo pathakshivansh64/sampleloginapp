@@ -12,6 +12,7 @@ const corsOptions = {
   origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'OPTIONS','PUT','DELETE'], // Allow GET, POST, and OPTIONS method
   preflightContinue: false, // Automatically handle OPTIONS requests
+  credentials: true
 };
 
 app.use(cors(corsOptions)); // Apply CORS middleware globally
