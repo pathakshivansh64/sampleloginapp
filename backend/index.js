@@ -9,9 +9,9 @@ const app = express();
 
 // Middleware
 const corsOptions = {
-  origin: '*', // Allow all origins
+  origin: 'https://sampleloginapp-frontend.vercel.app', // Allow all origins
   methods: ['GET', 'POST', 'OPTIONS','PUT','DELETE'], // Allow GET, POST, and OPTIONS method
-  preflightContinue: false, // Automatically handle OPTIONS requests
+ // Automatically handle OPTIONS requests
   credentials: true
 };
 
