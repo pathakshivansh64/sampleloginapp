@@ -23,7 +23,7 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization" // Include required headers
+          "value": "Content-Type, Authorization" 
         }
       ]
 }
