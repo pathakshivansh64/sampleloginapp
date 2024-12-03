@@ -9,7 +9,13 @@ const app = express();
 
 // Middleware
 
-app.use(cors()); // Apply CORS middleware globally
+const corsOptions = {
+  origin: 'https://sampleloginapp-frontend.vercel.app', // Frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // Required for cookies and authorization headers
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB connection
