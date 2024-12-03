@@ -15,6 +15,7 @@ const Dashboard = () => {
         const userId = JSON.parse(atob(token.split(".")[1])).userId;
         const response = await axios.get(`https://sampleloginapp-backend.vercel.app/api/contacts/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true
         });
         setContacts(response.data);
       } catch (error) {
@@ -35,7 +36,7 @@ const Dashboard = () => {
         await axios.put(
           `https://sampleloginapp-backend.vercel.app/api/contacts/${editingContactId}`,
           { ...form, userId },
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` },withCredentials: true }
         );
         setContacts(
           contacts.map((contact) =>
@@ -48,7 +49,7 @@ const Dashboard = () => {
         const response = await axios.post(
           "https://sampleloginapp-backend.vercel.app/api/contacts",
           { ...form, userId },
-          { headers: { Authorization: `Bearer ${token}` } }
+          { headers: { Authorization: `Bearer ${token}` },withCredentials: true }
         );
         setContacts([...contacts, response.data]);
         alert("Contact added successfully!");
@@ -73,6 +74,7 @@ const Dashboard = () => {
       try {
         await axios.delete(`https://sampleloginapp-backend.vercel.app/api/contacts/${contactId}`, {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true
         });
         setContacts(contacts.filter((contact) => contact._id !== contactId));
         alert("Contact deleted successfully!");
