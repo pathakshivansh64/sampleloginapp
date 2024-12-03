@@ -15,7 +15,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://sampleloginapp-backend.vercel.app/api/auth/register", form);
+      await axios.post("https://sampleloginapp-backend.vercel.app/api/auth/register", form,{withCredentials: true});
       alert("Registration successful! You can now log in.");
       navigate('/login')
     } catch (error) {
