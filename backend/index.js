@@ -8,14 +8,8 @@ dotenv.config({path:"./.env"});
 const app = express();
 
 // Middleware
-const corsOptions = {
-  origin: 'https://sampleloginapp-frontend.vercel.app', // Allow all origins
-  methods: ['GET', 'POST', 'OPTIONS','PUT','DELETE'], // Allow GET, POST, and OPTIONS method
- // Automatically handle OPTIONS requests
-  credentials: true
-};
 
-app.use(cors(corsOptions)); // Apply CORS middleware globally
+app.use(cors()); // Apply CORS middleware globally
 app.use(express.json());
 
 // MongoDB connection
