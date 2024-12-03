@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post("https://sampleloginapp-backend.vercel.app/api/auth/login", form);
+      const response = await axios.post("https://sampleloginapp-backend.vercel.app/api/auth/login", form ,{withCredentials: true});
       console.log(response)
       if(response.data.success){
       localStorage.setItem("token", response.data.token);
